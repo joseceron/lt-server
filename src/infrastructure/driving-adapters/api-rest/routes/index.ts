@@ -2,12 +2,14 @@
 import { Request, Response, Router, NextFunction } from 'express'
 import userRoutes from './user.routes'
 import userSessionRoutes from './userSession.routes'
+import companyRoutes from './company.routes'
 import { Exception } from '../../../../domain/exceptions/Exception'
 
 const route = Router()
 
 route.use('/v1/users', userRoutes)
 route.use('/v1/user-session', userSessionRoutes)
+route.use('/v1/companies', companyRoutes)
 
 route.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   if (err instanceof Exception) {
