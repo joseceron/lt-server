@@ -7,7 +7,7 @@
     "test": "jest",
     "test-watch": "jest --watch",
     "start": "NODE_OPTIONS='--max-old-space-size=8192' ts-node ./src/infrastructure/driving-adapters/api-rest/start.ts",
-    "build": "tsc --build",
+    "build": "NODE_OPTIONS='--max-old-space-size=8192' tsc --build",
     "clean": "tsc --build --clean",
     "start-js": "node ./dist/infrastructure/driving-adapters/api-rest/start.js"
   },
