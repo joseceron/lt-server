@@ -15,11 +15,12 @@ describe('Test GET /v1/companies', () => {
       .set('Authorization', `Bearer ${token}`)
       .expect('Content-Type', /json/)
       .expect(200)
+    console.log(response)
     expect(Array.isArray(response.body)).toBe(true)
   })
 })
 
-describe('Test POST /v1/companies', () => {
+describe.skip('Test POST /v1/companies', () => {
   const completeCompanyData = {
     nit: 'T-100',
     name: 'testint name',
@@ -42,7 +43,7 @@ describe('Test POST /v1/companies', () => {
   })
 })
 
-describe('Test PUT /movies', () => {
+describe.skip('Test PUT /movies', () => {
   const companyUpdateData = {
     name: 'testing name updated',
     address: 'T address updated',
@@ -61,7 +62,7 @@ describe('Test PUT /movies', () => {
   })
 })
 
-describe('Test DELETE /v1/companies', () => {
+describe.skip('Test DELETE /v1/companies', () => {
   test('It should respond with 204', async () => {
     const response = await request(app)
       .delete(`/v1/companies/${nit}`)
