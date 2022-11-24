@@ -6,7 +6,10 @@
   "scripts": {
     "test": "jest",
     "test-watch": "jest --watch",
-    "start": "ts-node ./src/infrastructure/driving-adapters/api-rest/start.ts"
+    "start": "ts-node ./src/infrastructure/driving-adapters/api-rest/start.ts",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "start-js": "node ./dist/infrastructure/driving-adapters/api-rest/start.js"
   },
   "keywords": [],
   "author": "",
