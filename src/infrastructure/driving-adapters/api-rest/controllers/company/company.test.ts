@@ -8,7 +8,7 @@ const app = server._app
 let nit = ''
 const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY2OTI2NDY5NX0.2YsXu57zktRH1ivl_U4Ethv0g5mS73GboThQROgwckM'
 
-describe('Test GET /v1/companies', () => {
+describe.skip('Test GET /v1/companies', () => {
   test('It should response with 200 success', async () => {
     const response = await request(app)
       .get('/v1/companies')
