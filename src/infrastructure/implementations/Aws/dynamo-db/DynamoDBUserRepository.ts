@@ -15,7 +15,8 @@ export class DynamoDBUserRepository implements UserRepository {
             Item: {
               id_pk: user.id,
               email_sk: user.email,
-              password: user.password
+              password: user.password,
+              isAdmin: false
             }
           }
         }],
@@ -28,20 +29,17 @@ export class DynamoDBUserRepository implements UserRepository {
           }
         }]
       }
-    }).promise()
+    }).promise()    
 
     const response = {
       id: user.id,
       email: user.email,
       password: user.password,
-      token: userSession.token
+      token: userSession.token,
+      isAdmin: false
     }
     return response
   }
-
-  async login (user: User): Promise<any> { return '' }
-
-  async logout (user: User): Promise<any> { return '' }
 
   async getByEmail (email: string): Promise<any> {
     const response = await this._db.scan({
@@ -62,11 +60,13 @@ export class DynamoDBUserRepository implements UserRepository {
     const id: string = item.id_pk ?? ''
     const emailItem: string = item.email_sk ?? ''
     const password: string = item.password ?? ''
+    const isAdmin: boolean = item.isAdmin ?? false
 
     const user = {
       id,
       email: emailItem,
-      password
+      password,
+      isAdmin
     }
 
     return user
@@ -92,10 +92,12 @@ export class DynamoDBUserRepository implements UserRepository {
 
     const id: string = item.id_pk ?? ''
     const emailItem: string = item.email_sk ?? ''
+    const isAdmin: boolean = item.isAdmin ?? false
 
     const user = {
       id,
-      email: emailItem
+      email: emailItem,
+      isAdmin
     }
 
     return user
